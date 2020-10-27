@@ -32,4 +32,21 @@ class FluxAndMonoTest {
                 .expectNext("Reactive Spring")
                 .verifyComplete();
     }
+
+
+    @Test
+    public void fluxTestElementsWithError() {
+        Flux<String> stringFlux = Flux.just("Spring", "Spring Boot", "Reactive Spring")
+                .concatWith(Flux.error(new RuntimeException("Exception is thrown!")))
+                .log();
+
+        StepVerifier.create(stringFlux)
+                .expectNext("Spring")
+                .expectNext("Spring Boot")
+                .expectNext("Reactive Spring")
+                .expectError(RuntimeException.class)
+                .verify();
+//                .verifyError();
+        // I tried with just verifyError instead of line 47, 48 and it worked
+    }
 }
