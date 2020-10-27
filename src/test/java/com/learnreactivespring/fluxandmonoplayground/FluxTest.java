@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 import reactor.core.publisher.Flux;
 import reactor.test.StepVerifier;
 
-class FluxAndMonoTest {
+class FluxTest {
 
     @Test
     public void fluxTest() {
@@ -32,7 +32,6 @@ class FluxAndMonoTest {
                 .expectNext("Reactive Spring")
                 .verifyComplete();
     }
-
 
     @Test
     public void fluxTestElementsWithError() {
