@@ -44,7 +44,7 @@ class FluxAndMonoTest {
                 .expectNext("Spring")
                 .expectNext("Spring Boot")
                 .expectNext("Reactive Spring")
-                .expectError(RuntimeException.class)
+                .expectErrorMessage("Exception is thrown!")
                 .verify();
 //                .verifyError();
         // I tried with just verifyError instead of line 47, 48 and it worked
