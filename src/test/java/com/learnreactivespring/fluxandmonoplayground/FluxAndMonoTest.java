@@ -49,4 +49,16 @@ class FluxAndMonoTest {
 //                .verifyError();
         // I tried with just verifyError instead of line 47, 48 and it worked
     }
+
+    @Test
+    public void fluxTestElementsCountWithError() {
+        Flux<String> stringFlux = Flux.just("Spring", "Spring Boot", "Reactive Spring")
+                .concatWith(Flux.error(new RuntimeException("Exception is thrown!")))
+                .log();
+
+        StepVerifier.create(stringFlux)
+                .expectNextCount(3)
+                .expectErrorMessage("Exception is thrown!")
+                .verify();
+    }
 }
