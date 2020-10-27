@@ -41,13 +41,9 @@ class FluxAndMonoTest {
                 .log();
 
         StepVerifier.create(stringFlux)
-                .expectNext("Spring")
-                .expectNext("Spring Boot")
-                .expectNext("Reactive Spring")
+                .expectNext("Spring", "Spring Boot", "Reactive Spring")
                 .expectErrorMessage("Exception is thrown!")
                 .verify();
-//                .verifyError();
-        // I tried with just verifyError instead of line 47, 48 and it worked
     }
 
     @Test
