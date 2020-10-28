@@ -21,7 +21,7 @@ import static org.hamcrest.Matchers.is;
 @ExtendWith(SpringExtension.class)
 @WebFluxTest
 @AutoConfigureWebTestClient(timeout = "9000")
-class FluxMonoControllerTest {
+class FluxControllerTest {
 
     @Autowired
     WebTestClient webTestClient;

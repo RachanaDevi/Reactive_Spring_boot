@@ -8,7 +8,7 @@ import reactor.core.publisher.Flux;
 import java.time.Duration;
 
 @RestController
-public class FluxMonoController {
+public class FluxController {
 
     @GetMapping("/flux")
     public Flux<Integer> returnFlux() {
