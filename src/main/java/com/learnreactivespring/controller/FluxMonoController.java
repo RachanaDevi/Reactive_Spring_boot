@@ -10,6 +10,13 @@ import java.time.Duration;
 @RestController
 public class FluxMonoController {
 
+    @GetMapping("/flux")
+    public Flux<Integer> returnFlux() {
+        return Flux.just(5, 6, 7, 8)
+                .delayElements(Duration.ofSeconds(2))
+                .log();
+    }
+
     @GetMapping(value = "/fluxstream", produces = MediaType.APPLICATION_STREAM_JSON_VALUE)
     public Flux<Integer> returnFluxStream() {
         return Flux.just(1, 2, 3, 4)
@@ -17,10 +24,4 @@ public class FluxMonoController {
                 .log();
     }
 
-    @GetMapping("/flux")
-    public Flux<Integer> returnFlux() {
-        return Flux.just(5, 6, 7, 8)
-                .delayElements(Duration.ofSeconds(2))
-                .log();
-    }
 }
