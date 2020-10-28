@@ -76,6 +76,22 @@ class FluxMonoControllerTest {
                 .exchange()
                 .expectStatus().isOk()
                 .expectBodyList(Integer.class)
-                .consumeWith((response)->assertThat(response.getResponseBody(),is(expectedIntegerList)));
+                .consumeWith((response) -> assertThat(response.getResponseBody(), is(expectedIntegerList)));
+    }
+
+    @Test
+    public void shouldValidateResponseForInfiniteValues() {
+        Flux<Long> longFlux = webTestClient.get().uri("/fluxinfinite")
+                .accept(MediaType.APPLICATION_STREAM_JSON)
+                .exchange()
+                .expectStatus().isOk()
+                .returnResult(Long.class)
+                .getResponseBody();
+
+        StepVerifier.create(longFlux)
+                .expectNext(0L,1L,2L)
+                .thenCancel()
+                .verify();
+
     }
 }
