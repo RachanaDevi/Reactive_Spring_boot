@@ -3,6 +3,7 @@ package com.learnreactivespring.controller;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.reactive.AutoConfigureWebTestClient;
 import org.springframework.boot.test.autoconfigure.web.reactive.WebFluxTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
@@ -12,6 +13,7 @@ import reactor.test.StepVerifier;
 
 @ExtendWith(SpringExtension.class)
 @WebFluxTest
+@AutoConfigureWebTestClient(timeout="9000")
 class FluxMonoControllerTest {
 
     /*We need a non blocking client to tests
