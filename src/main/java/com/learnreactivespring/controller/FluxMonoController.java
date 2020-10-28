@@ -13,7 +13,7 @@ public class FluxMonoController {
     @GetMapping("/flux")
     public Flux<Integer> returnFlux() {
         return Flux.just(5, 6, 7, 8)
-                .delayElements(Duration.ofSeconds(2))
+                .delayElements(Duration.ofSeconds(1))
                 .log();
     }
 
@@ -23,5 +23,4 @@ public class FluxMonoController {
                 .delayElements(Duration.ofSeconds(2))
                 .log();
     }
-
 }
